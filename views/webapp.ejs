@@ -1,4 +1,31 @@
-<div>WebApp View</div>
+<div>
+	<div style="text-align: right;">message notification placeholder<img class="" src="messages.png" style="height:2rem;"></div>
+
+	<header class="card card-body">
+		<div class="grid-container">
+			<div class="item1">NewFeatureItem</div>
+			<div class="item2">UserListItem</div>  
+			<div class="item3">RoomItem</div>
+		</div>
+	</header>
+	<main>
+		<div class="chat-messages" style="overflow-y:auto; width: auto; height:215px; padding: 20px; border: solid 1px #EEE;">
+	</main>
+	<div>
+		<form class="form-group" id="chat-form">
+			<input
+				class="form-control"
+				id="msg"
+				type="text"
+				placeholder="Enter Message"
+				required
+				autocomplete="off"
+			/>
+			<button class="btn btn-primary btn-block mb-2"><i class="fas fa-paper-plane"></i> Send</button>
+		</form>
+	</div>
+
+</div>
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/DOM/dom.js"></script>
 	<script src="/DOM/blank.js"></script>
