@@ -2,13 +2,23 @@ body {
   font-family: helvetica;
 }
 
-@font-face {
-	font-family:"Gufftron-Regular";
-	src:url("Gufftron-Regular.ttf") format("truetype");
-	font-weight:normal;font-style:normal;
+.item1 { grid-area: newfeature0item; }
+.item2 { grid-area: userlistitem; }
+.item3 { grid-area: roomnameitem; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'userlistitem userlistitem userlistitem userlistitem userlistitem newfeature0item'
+    'roomnameitem roomnameitem roomnameitem roomnameitem roomnameitem newfeature0item';
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
 }
-/**/
-/* Fonts for everything generic */
-div, option, p, tr, th, .normalFont {
-	font-family: "Gufftron-Regular";
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
 }
