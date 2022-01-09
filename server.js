@@ -6,8 +6,8 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const socket = require('socket.io');
-const {myUserFunction} = require('./server_utils/usermanager');
-const {myGameFunction} = require('./server_utils/gamemanager');
+const {userJoin, getCurrentUser} = require('./server_utils/usermanager');
+const {formatMessage} = require('./server_utils/gamemanager');
 const { Console } = require('console');
 const app = express();
 
@@ -31,8 +31,9 @@ app.use(express.static(path.join(__dirname, '/public')));
 //Run when client connects
 io.on('connection', socket => {
 
-	socket.on('joinRoom', () => {
-			
+	socket.on('joinRoom', ({ username, room }) => {
+    const user = userJoin(socket.id, username, room);
+    socket.join(user.room);
 	});
 
 	socket.on('rejoinRoom', () => {
@@ -41,6 +42,12 @@ io.on('connection', socket => {
 
 	socket.on('disconnect', () => {
 
+	});
+
+  	// Listen for chatMessage
+	socket.on('chatMessage', msg => {
+		const user = getCurrentUser(socket.id);
+		io.to(user.room).emit('message', formatMessage(user.username, msg));
 	});
 
 });
