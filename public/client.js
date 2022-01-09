@@ -1,4 +1,4 @@
-const socket = io('http://teamhaircut.org:5000', {
+const socket = io('http://teamhaircut.org:5002', {
 	'reconnection': true,
 	'reconnectionDelay': 50,
 	'maxReconnectionAttempts': Infinity
